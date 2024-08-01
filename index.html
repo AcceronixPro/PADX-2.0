@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>PADX 2.0</h1>
+        <input type="search" id="search-input" placeholder="Search notes...">
+    </header>
+    <main>
+        <button id="add-note-btn">Add Note</button>
+        <ul id="note-list-items"></ul>
+        <div id="note-form">
+            <input type="text" id="note-title" placeholder="Title">
+            <textarea id="note-content" placeholder="Content"></textarea>
+            <input type="text" id="note-tags" placeholder="Tags (comma separated)">
+            <button id="save-note-btn">Save Note</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+    <script src="service-worker.js"></script>
+    <script>
+		
+		// Service worker
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('service-worker.js').then(
+					() => {
+						
+					},
+					err => {
+						console.log('❌ Service worker registration', err);
+					}
+				)
+			});
+		}
+	</script>
+</body>
+</html>
+
